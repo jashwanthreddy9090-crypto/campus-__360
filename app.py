@@ -143,8 +143,8 @@ def initialize_database():
     # No users are created automatically.
     # If you need an admin account, set ADMIN_EMAIL and ADMIN_PASSWORD
     # in Vercel Environment Variables. The admin email must use @campus.360.
-    admin_email = os.environ.get("ADMIN_EMAIL", "").strip().lower()
-    admin_password = os.environ.get("ADMIN_PASSWORD", "")
+    admin_email = os.environ.get("ADMIN_EMAIL", "admin@campus.360").strip().lower()
+    admin_password = os.environ.get("ADMIN_PASSWORD", "Campus360@Admin2026")
     if admin_email and admin_password and valid_campus_email(admin_email):
         if not con.execute("SELECT 1 FROM users WHERE email=?", (admin_email,)).fetchone():
             admin_name = os.environ.get("ADMIN_NAME", "Campus Administrator").strip() or "Campus Administrator"
